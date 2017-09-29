@@ -6,7 +6,9 @@
       this.level = level;
     }
     show() {
-      console.log(`Hi! My name is ${this.name}, my level is ${this.level}`);
+      let returnText = `Hi! My name is ${this.name}, my level is ${this.level}`;
+      //console.log(returnText);
+      return returnText;
     }
     valueOf(){
       return this.level;
@@ -29,7 +31,9 @@
       this.forEach(function(item){
         item.show();
       });
-      console.log(`There are ${this.length} pokemons here.`);
+      let returnText = `There are ${this.length} pokemons here.`;
+      //console.log(returnText);
+      return returnText;
     }
     max(){
       let strongestPokemon = Math.max(...this);

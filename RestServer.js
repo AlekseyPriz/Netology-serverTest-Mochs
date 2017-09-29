@@ -36,7 +36,6 @@ app.post('/v1/users', function(req, res) {
     res.status(400);
     res.send({ error: 'Name or score is not defined' });
   }
-  console.log(req.body);
   users.push({
     name: req.body.name,
     score: req.body.score

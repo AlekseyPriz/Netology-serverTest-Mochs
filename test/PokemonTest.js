@@ -34,6 +34,14 @@ describe('Тестируем методы add, show, max классов Pokemon 
     it('Вернет заданный объект', () => {
       expect(pikachu).to.eql( { name: 'Pikachu', level: 1 });
     });
+
+    it('Вернет заданный правильный текст сообщения', () => {
+
+      let showFunctionsText = pikachu.show();
+
+      expect(showFunctionsText).to.equal('Hi! My name is Pikachu, my level is 1');
+    });
+
   });
 
   describe('Тесты на метод add класса PokemonList', () => {
@@ -72,6 +80,14 @@ describe('Тестируем методы add, show, max классов Pokemon 
     before(() => {
       addArr = new Pokemonlist();
       addArr.add('newPok', 80);
+      addArr.add('newPokemon', 10);
+
+    });
+
+    it('Функция выводит правильное количество покемонов в списке', () => {
+      let showFunctionsText = addArr.show();
+
+      expect(showFunctionsText).to.equal('There are 2 pokemons here.');
     });
 
     it('Имя покемона задано в строковом формате', () => {
@@ -92,14 +108,11 @@ describe('Тестируем методы add, show, max классов Pokemon 
 
   });
 
-  describe('Тесты на метод maw класса PokemonList', () => {
-    let maxArr, maxArr2, maxArr3;
+  describe('Тесты на метод max класса PokemonList', () => {
+    let maxArr;
 
-
-    before(() => {
+    beforeEach(() => {
       maxArr = new Pokemonlist();
-      maxArr2 = new Pokemonlist();
-      maxArr3 = new Pokemonlist();
 
     });
 
@@ -115,16 +128,16 @@ describe('Тестируем методы add, show, max классов Pokemon 
     it('Выведет первого покемона добавленного в массив, при внесении покемонов ' +
       'одинакового уровня', () => {
 
-      maxArr2.add('b', 80);
-      maxArr2.add('c', 80);
-      maxArr2.add('a', 80);
+      maxArr.add('b', 80);
+      maxArr.add('c', 80);
+      maxArr.add('a', 80);
 
-      expect(maxArr2.max()).to.eql({ name: 'b', level: 80 });
+      expect(maxArr.max()).to.eql({ name: 'b', level: 80 });
     });
 
     it('Выведет покемона с любмы уровнем, если он один в массике', () => {
-      maxArr3.add('minus', -100);
-      expect(maxArr3.max()).to.eql({ name: 'minus', level: -100 });
+      maxArr.add('minus', -100);
+      expect(maxArr.max()).to.eql({ name: 'minus', level: -100 });
     });
 
   });
